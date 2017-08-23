@@ -1,22 +1,22 @@
 import React from 'react'
 import DataTable from '../component/DataTable'
 import {connect} from 'react-redux'
-import {userList} from '../action/Action'
+import {userList, memberList} from '../action/Action'
 
 const mapStateToProps = state=>{
     return{
-        items:state.users
+        items:state.members
     }
 }
 
 const mapDispatchToProps = dispatch =>{
     return {
         fetchItems:()=>{
-            dispatch(userList())
+            dispatch(memberList)
         }
     }
 }
 
-const UserTable = connect(mapStateToProps, mapDispatchToProps)(DataTable)
+const MemberTable = connect(mapStateToProps, mapDispatchToProps)(DataTable)
 
-export default UserTable
+export default MemberTable

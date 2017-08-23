@@ -2,31 +2,62 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export default class DataTable extends Component{
-    static PropTypes={
+    static propTypes={
         items:PropTypes.array.isRequired
+        ,fetchItems:PropTypes.func.isRequired
     }
 
-    renderItem(item){
-        let columns=[];
+    renderHeader(item){
+        let keys= Object.keys(item)
+        let ths=[]
+        for(let i in keys){
+            ths.push(
+                <th key={i}>{keys[i]}</th>
+            )
+        }
+        return(
+            <tr>{ths}</tr>
+        )
+    }
+
+    renderItem(item, index, arr){
+        // let tds=[];
+        //
+        // for(let key in item){
+        //     tds.push(
+        //         <td key={key}>{item[key]}</td>
+        //     );
+        // }
+        // console.log('~~tds~',tds.length)
+        // return (
+        //     <tr key={item.id}>{tds}</tr>
+        // );
+        /*****/
+        let tds=[];
         for(let key in item){
-            columns.push(
-                <td>{item[key]}</td>
+            tds.push(
+                <td key={key}>{item[key]}</td>
             );
         }
 
         return (
-            <tr>{columns}</tr>
+            <tr key={index}>{tds}</tr>
         );
     }
 
-    render(){
-        const {
-            items=[{a:'1-a',b:'1-b'},{a:'2-a',b:'2-b'}]
-        } =this.props
+    componentWillMount(){
+        this.props.fetchItems();
+    }
 
+    render(){
         return (
             <table>
-                {items.map(this.renderItem)}
+                <thead>
+                    {this.renderHeader(this.props.items[0])}
+                </thead>
+                <tbody>
+                    {this.props.items.map(this.renderItem)}
+                </tbody>
             </table>
         )
     }
