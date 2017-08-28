@@ -1,20 +1,20 @@
-.App {
+.body {
   text-align: center;
 }
 
-.App-logo {
+.logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.header {
+  background-color: aquamarine;
+  height: 100px;
   padding: 20px;
   color: white;
 }
 
-.App-intro {
+.intro {
   font-size: large;
 }
 
@@ -24,11 +24,10 @@
 }
 
 .menu{
-  width: 10%;
-  float: left;
+  background-color: deepskyblue;
 }
 
-.menu-item {
-  background-color:deepskyblue;
-  text-decoration-color: white;
+.menuItem {
+  /*background-color:deepskyblue;*/
+  /*text-decoration-color: white;*/
 }

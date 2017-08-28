@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './container/App';
+import Root from './container/Root';
 import registerServiceWorker from './registerServiceWorker';
 
 import {Provider} from 'react-redux'
@@ -9,9 +8,7 @@ import AppStore from './store/AppStore'
 
 
 ReactDOM.render(
-    <Provider store={AppStore}>
-        <App />
-    </Provider>,
+    <Root store={AppStore}/>,
     document.getElementById('root')
 );
 

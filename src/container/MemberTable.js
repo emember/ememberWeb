@@ -12,7 +12,7 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = dispatch =>{
     return {
         fetchItems:()=>{
-            dispatch(memberList)
+            dispatch(memberList())
         }
     }
 }

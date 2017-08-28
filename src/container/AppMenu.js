@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 
-const AppMenu = connect(mapStateToProps, mapDispatchToProps)(Menu)
+const AppMenu = connect(mapStateToProps, mapDispatchToProps,null,{pure: false})(Menu)
 
 export default AppMenu
