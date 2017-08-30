@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {Grid, Row, Form, FormControl, FormGroup, Col, Button, ControlLabel} from 'react-bootstrap';
 import LanguageDropDown from './LanguageDropDown'
 
+import {localize} from 'redux-i18n'
+
 class LoginPage extends Component{
     render(){
         return (
@@ -13,7 +15,7 @@ class LoginPage extends Component{
                         </Col>
                         <FormGroup controlId="formHorizontalEmail">
                             <Col componentClass={ControlLabel} lg={2}>
-                                Email
+                                {this.props.t('username')}
                             </Col>
                             <Col lg={10}>
                                 <FormControl type="email" placeholder="Email" />
@@ -22,7 +24,7 @@ class LoginPage extends Component{
 
                         <FormGroup controlId="formHorizontalPassword">
                             <Col componentClass={ControlLabel} lg={2}>
-                                Password
+                                {this.props.t('password')}
                             </Col>
                             <Col lg={10}>
                                 <FormControl type="password" placeholder="Password" />
@@ -32,22 +34,18 @@ class LoginPage extends Component{
                         <FormGroup>
                             <Col lgOffset={2} lg={10}>
                                 <Button type="submit">
-                                    Sign in
+                                    {this.props.t('login')}
                                 </Button>
                             </Col>
                         </FormGroup>
 
                         <FormGroup>
                             <Col componentClass={ControlLabel} lg={2}>
-                                Language
+                                {this.props.t('language')}
                             </Col>
 
                             <Col lg={10}>
                                 <LanguageDropDown/>
-                                {/*<FormControl componentClass="select" placeholder="select" onChange={this.dpdLangOnChange}>*/}
-                                    {/*<option value="en">English</option>*/}
-                                    {/*<option value="cn">中文</option>*/}
-                                {/*</FormControl>*/}
                             </Col>
                         </FormGroup>
                     </Form>
@@ -58,4 +56,4 @@ class LoginPage extends Component{
 }
 
 
-export default LoginPage
+export default localize()(LoginPage)

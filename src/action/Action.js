@@ -34,9 +34,8 @@ export function memberList() {
 
 export const LANGUAGE_CHANGE ='LANGUAGE_CHANGE'
 export const languageChange =(langCode)=> {
-    console.log('~~~~',langCode);
-    // return {
-    //     type:LANGUAGE_CHANGE,
-    //     langCode:langCode
-    // }
+    return {
+        type:LANGUAGE_CHANGE,
+        langCode:langCode
+    }
 }

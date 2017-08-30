@@ -11,7 +11,7 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = dispatch =>{
     return {
         dpdOnChange:(selected)=>{
-            dispatch(languageChange(selected))
+            dispatch(languageChange(selected.target.value))
         }
     }
 }
