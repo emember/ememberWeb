@@ -1,0 +1,11 @@
+import {LANGUAGE_CHANGE} from '../action/Action'
+
+export default function appLangs(state =[], action){
+
+    switch (action.type){
+        case LANGUAGE_CHANGE:
+            return action.payload;
+        default:
+            return state;
+    }
+}

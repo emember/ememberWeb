@@ -32,6 +32,11 @@ export function memberList() {
     }
 }
 
-// export function memberEdit(memberId) {
-//     return {type:MEMBER_EDIT , memberId}
-// }
+export const LANGUAGE_CHANGE ='LANGUAGE_CHANGE'
+export const languageChange =(langCode)=> {
+    console.log('~~~~',langCode);
+    // return {
+    //     type:LANGUAGE_CHANGE,
+    //     langCode:langCode
+    // }
+}

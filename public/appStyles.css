@@ -38,3 +38,7 @@ body {
   /*background-color:deepskyblue;*/
   /*text-decoration-color: white;*/
 }
+
+.appContentCenter{
+  text-align: center;
+}

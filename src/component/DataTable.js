@@ -50,8 +50,6 @@ export default class DataTable extends Component{
     }
 
     render(){
-        console.log('~~datatable~~',this.props.items);
-
         if(this.props.items.length==0)return(<div></div>)
 
         return (

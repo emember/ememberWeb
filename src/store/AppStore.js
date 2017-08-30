@@ -5,7 +5,12 @@ import thunk from 'redux-thunk'
 import * as Action from '../action/Action'
 
 const initState={
-     menuItems:[
+    selectedLang:'en'
+    ,appLangs:[
+        {key:'en',value:'English'}
+        ,{key:'zn',value:'中文'}
+    ]
+    ,menuItems:[
          {name:'Members',url:'/member'}
          ,{name:'Marketing',url:'/marketing'}
          ,{name:'Reports',url:'/reports'}
