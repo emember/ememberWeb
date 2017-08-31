@@ -5,8 +5,7 @@ import thunk from 'redux-thunk'
 import * as Action from '../action/Action'
 
 const initState={
-    selectedLang:'cn'
-    ,appLangs:[
+    appLangs:[
         {key:'en',value:'English'}
         ,{key:'cn',value:'中文'}
     ]

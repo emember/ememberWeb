@@ -9,7 +9,8 @@ import ReportPage from "./ReportPage";
 import CompanyPage from "./CompanyPage";
 import UserPage from "./UserPage";
 
-import LoginPage from './LoginPage'
+import LoginPage from '../component/LoginPage'
+import {localize} from 'redux-i18n'
 
 import {Nav, NavItem} from 'react-bootstrap'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
@@ -17,7 +18,10 @@ import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 const App =()=>(
     <Router>
       <Grid>
-        <LoginPage/>
+          <Route path="/" component={LoginPage}/>
+          {/*<Route path="/" component={MarketingPage}/>*/}
+
+          {/*<LoginPage/>*/}
         {/*<Row className="appHeader">*/}
             {/*<Col lg={2}>*/}
                 {/*<h1>MENU</h1>*/}

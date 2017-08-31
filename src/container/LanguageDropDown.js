@@ -1,6 +1,7 @@
 import Dropdown from '../component/Dropdown';
 import {languageChange} from '../action/Action'
 import {connect} from 'react-redux'
+import {setLanguage} from 'redux-i18n'
 
 const mapStateToProps = state=>{
     return{
@@ -11,7 +12,7 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = dispatch =>{
     return {
         dpdOnChange:(selected)=>{
-            dispatch(languageChange(selected.target.value))
+            dispatch(setLanguage(selected.target.value))
         }
     }
 }

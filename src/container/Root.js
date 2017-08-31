@@ -6,13 +6,16 @@ import App from './App'
 import I18n from 'redux-i18n'
 import {translations} from '../translations'
 
-const  Root = ({store}) =>(
-    <Provider store={store}>
-        <I18n translations={translations} initialLang={store.selectedLang}>
-            <App/>
-        </I18n>
-    </Provider>
-)
+const  Root = ({store}) =>{
+    console.log('~~~huhu~~',store.getState());
+    return(
+        <Provider store={store}>
+            <I18n translations={translations} initialLang='en'>
+                <App/>
+            </I18n>
+        </Provider>
+    )
+}
 
 Root.propTypes ={
     store:PropTypes.object.isRequired
