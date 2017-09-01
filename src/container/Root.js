@@ -7,7 +7,6 @@ import I18n from 'redux-i18n'
 import {translations} from '../translations'
 
 const  Root = ({store}) =>{
-    console.log('~~~huhu~~',store.getState());
     return(
         <Provider store={store}>
             <I18n translations={translations} initialLang='en'>

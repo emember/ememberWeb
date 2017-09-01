@@ -1,24 +1,25 @@
 import {Grid, Row, Col} from 'react-bootstrap';
 import React, { Component } from 'react';
 import logo from '../logo.svg';
-import AppMenu from '../container/AppMenu'
+import AppMenu from './common/AppMenu'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MemberPage from "./MemberPage";
-import MarketingPage from "./MarketingPage";
-import ReportPage from "./ReportPage";
-import CompanyPage from "./CompanyPage";
-import UserPage from "./UserPage";
+import MemberPage from "./scene/MemberPage";
+import MarketingPage from "./scene/MarketingPage";
+import ReportPage from "./scene/ReportPage";
+import CompanyPage from "./scene/CompanyPage";
+import UserPage from "./scene/UserPage";
 
-import LoginPage from '../component/LoginPage'
 import {localize} from 'redux-i18n'
 
 import {Nav, NavItem} from 'react-bootstrap'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 
+import LoginScene from '../container/scene/LoginScene'
+
 const App =()=>(
     <Router>
       <Grid>
-          <Route path="/" component={LoginPage}/>
+          <Route path="/" component={LoginScene}/>
           {/*<Route path="/" component={MarketingPage}/>*/}
 
           {/*<LoginPage/>*/}

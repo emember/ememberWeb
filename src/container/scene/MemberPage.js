@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MemberTable from './MemberTable'
+import MemberTable from '../common/MemberTable'
 
 class MemberPage extends  Component{
     render(){

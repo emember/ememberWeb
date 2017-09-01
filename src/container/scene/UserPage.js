@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import UserTable from './UserTable'
+import UserTable from '../common/UserTable'
 class UserPage extends  Component{
     render(){
         return(

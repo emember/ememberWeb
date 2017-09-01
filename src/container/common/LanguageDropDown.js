@@ -1,5 +1,5 @@
-import Dropdown from '../component/Dropdown';
-import {languageChange} from '../action/Action'
+import Dropdown from '../../component/common/Dropdown';
+import {languageChange} from '../../action/Action'
 import {connect} from 'react-redux'
 import {setLanguage} from 'redux-i18n'
 

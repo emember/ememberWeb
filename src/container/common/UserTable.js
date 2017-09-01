@@ -1,7 +1,7 @@
 import React from 'react'
-import DataTable from '../component/DataTable'
+import DataTable from '../../component/common/DataTable'
 import {connect} from 'react-redux'
-import {userList} from '../action/Action'
+import {userList} from '../../action/Action'
 
 const mapStateToProps = state=>{
     return{

@@ -1,7 +1,7 @@
 import React from 'react'
-import Menu from '../component/Menu'
+import Menu from '../../component/common/Menu'
 import {connect} from 'react-redux'
-import {userList, memberList} from '../action/Action'
+import {userList, memberList} from '../../action/Action'
 
 const mapStateToProps = state=>{
     return{
