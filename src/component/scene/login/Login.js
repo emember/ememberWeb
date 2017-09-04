@@ -18,7 +18,7 @@ class Login extends Component{
 
     render(){
         return (
-            <LoginForm onSubmit={this.props.btnLoginClick}/>
+            <LoginForm onSubmit={this.props.btnLoginClick} initialValues={this.props.loginUser}/>
         )
     }
 }

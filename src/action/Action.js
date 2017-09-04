@@ -16,7 +16,6 @@ export function userList() {
     }
 }
 
-
 export const USER_LOGIN_REQUEST ='USER_LOGIN_REQUEST'
 export const USER_LOGIN_FAILURE ='USER_LOGIN_FAILURE'
 export const USER_LOGIN_SUCCESS ='USER_LOGIN_SUCCESS'
@@ -28,7 +27,7 @@ export function userLogin(user) {
             ,method:'POST'
             ,types:[USER_LOGIN_REQUEST,USER_LOGIN_SUCCESS,USER_LOGIN_FAILURE]
             ,headers: { 'Content-Type': 'application/json' }
-            ,body: JSON.stringify(...{entity:'user', func:'wlogin'},user)
+            ,body: JSON.stringify({...{entity:'user', func:'wlogin'},...user})
         }
     }
 }

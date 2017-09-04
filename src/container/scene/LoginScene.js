@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Login from 'component/scene/login/Login';
+import {userLogin} from "action/Action"
 
 
 const mapStateToProps = state=>{
@@ -12,8 +13,7 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = dispatch =>{
     return {
         btnLoginClick:(user)=>{
-            console.log('~~~from container component~~~~',user);
-            // dispatch(userLogin(user));
+            dispatch(userLogin(user));
         }
     }
 }

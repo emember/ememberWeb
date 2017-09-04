@@ -14,7 +14,8 @@ import {localize} from 'redux-i18n'
 import {Nav, NavItem} from 'react-bootstrap'
 import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 
-import LoginScene from '../container/scene/LoginScene'
+// import Login from 'component/scene/login/Login';
+import LoginScene from './scene/LoginScene'
 
 const App =()=>(
     <Router>
