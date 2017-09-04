@@ -7,7 +7,7 @@ export default function loginUser(state ={}, action){
             return state;
         case USER_LOGIN_SUCCESS:
             console.log('~~~login success~~~',action);
-            return state;
+            return {username:'111@222.com', password:'111', verified:true};
         case USER_LOGIN_FAILURE:
             console.log('~~~login failed~~~',action);
             return state;

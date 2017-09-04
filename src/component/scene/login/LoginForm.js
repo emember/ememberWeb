@@ -32,7 +32,7 @@ class LoginForm extends Component{
                                 {this.props.t('password')}
                             </Col>
                             <Col lg={10}>
-                                <FormControl type="password" placeholder={this.props.t('password')} />
+                                <Field name="password" type="password" placeholder={this.props.t('password')} component={ReduxFormControl}/>
                             </Col>
                         </FormGroup>
 

@@ -1,27 +1,33 @@
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid} from 'react-bootstrap';
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import AppMenu from './common/AppMenu'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MemberPage from "./scene/MemberPage";
-import MarketingPage from "./scene/MarketingPage";
-import ReportPage from "./scene/ReportPage";
-import CompanyPage from "./scene/CompanyPage";
-import UserPage from "./scene/UserPage";
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import MemberScene from "./scene/MemberScene";
 
-import {localize} from 'redux-i18n'
-
-import {Nav, NavItem} from 'react-bootstrap'
-import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
 
 // import Login from 'component/scene/login/Login';
+import Member from 'component/scene/member/Member';
+
+
 import LoginScene from './scene/LoginScene'
+
+// const PrivateRoute = ({ component: Component, ...rest }) => (
+//     <Route {...rest} render={props => (
+//         fakeAuth.isAuthenticated ? (
+//             <Component {...props}/>
+//         ) : (
+//             <Redirect to={{
+//                 pathname: '/',
+//                 state: { from: props.location }
+//             }}/>
+//         )
+//     )}/>
+// )
 
 const App =()=>(
     <Router>
       <Grid>
-          <Route path="/" component={LoginScene}/>
-          {/*<Route path="/" component={MarketingPage}/>*/}
+          <Route exact path="/" component={LoginScene}/>
+          <Route path="/member" component={Member}/>
 
           {/*<LoginPage/>*/}
         {/*<Row className="appHeader">*/}

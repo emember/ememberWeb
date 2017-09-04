@@ -1,6 +1,7 @@
 import React,{Component}  from 'react';
 import PropTypes from 'prop-types'
 import LoginForm from './LoginForm'
+import MemberScene from 'container/scene/MemberScene'
 
 
 class Login extends Component{
@@ -17,6 +18,12 @@ class Login extends Component{
     }
 
     render(){
+        if(this.props.loginUser.verified){
+            return (
+                <MemberScene />
+            )
+        }
+
         return (
             <LoginForm onSubmit={this.props.btnLoginClick} initialValues={this.props.loginUser}/>
         )

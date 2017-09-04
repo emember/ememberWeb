@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Login from 'component/scene/login/Login';
 import {userLogin} from "action/Action"
 
-
 const mapStateToProps = state=>{
     return{
         loginUser:state.loginUser

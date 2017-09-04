@@ -17,7 +17,7 @@ const initState={
          ,{name:'Users',url:'/user'}
          // ,{name:'Logout',url:'/logout'}
      ]
-    ,loginUser:{username:'111@222.com', password:'111'}
+    ,loginUser:{username:'111@222.com', password:'111', verified:false}
     ,users:[]
     ,members:[]
     // ,userWip:{}
