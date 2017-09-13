@@ -10,11 +10,11 @@ const initState={
         ,{key:'cn',value:'中文'}
     ]
     ,menuItems:[
-         {name:'Members',url:'/main', exact:true}
-         ,{name:'Marketing',url:'/main/marketing', exact:false}
-         ,{name:'Reports',url:'/main/reports', exact:false}
-         ,{name:'Company',url:'/main/company', exact:false}
-         ,{name:'Users',url:'/main/user', exact:false}
+         {name:'members',url:'/main', exact:true}
+         ,{name:'marketing',url:'/main/marketing', exact:false}
+         ,{name:'reports',url:'/main/reports', exact:false}
+         ,{name:'company',url:'/main/company', exact:false}
+         ,{name:'users',url:'/main/user', exact:false}
          // ,{name:'Logout',url:'/logout'}
      ]
     ,loginUser:{username:'111@222.com', password:'111', verified:false}

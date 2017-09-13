@@ -9,8 +9,6 @@ class Dropdown extends FormControl {
         ,dpdOnChange:PropTypes.func.isRequired
     }
 
-
-
     render(){
         let options = this.props.items.map((item, index, arr)=>{
             return(

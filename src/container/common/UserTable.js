@@ -5,7 +5,8 @@ import {userList} from '../../action/Action'
 
 const mapStateToProps = state=>{
     return{
-        items:state.users
+        items:state.users,
+        columns:['userId', 'firstname', 'lastname', 'email']
     }
 }
 

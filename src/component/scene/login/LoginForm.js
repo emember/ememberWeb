@@ -56,7 +56,6 @@ class LoginForm extends Component{
                 </Col>
             </Row>
         )
-
     }
 }
 

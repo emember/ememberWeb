@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {localize} from 'redux-i18n'
+import {Table} from 'react-bootstrap'
 
-export default class DataTable extends Component{
+
+class DataTable extends Component{
     static propTypes={
         items:PropTypes.array.isRequired
         ,fetchItems:PropTypes.func.isRequired
+        ,columns:PropTypes.array.isRequired
     }
 
-    renderHeader(item){
-        let keys= Object.keys(item)
+    renderHeader(){
         let ths=[]
-        for(let i in keys){
+        for(let idx in this.props.columns){
             ths.push(
-                <th key={i}>{keys[i]}</th>
+                <th key={this.props.columns[idx]}>{this.props.t(this.props.columns[idx])}</th>
             )
         }
         return(
@@ -20,26 +23,13 @@ export default class DataTable extends Component{
         )
     }
 
-    renderItem(item, index, arr){
-        // let tds=[];
-        //
-        // for(let key in item){
-        //     tds.push(
-        //         <td key={key}>{item[key]}</td>
-        //     );
-        // }
-        // console.log('~~tds~',tds.length)
-        // return (
-        //     <tr key={item.id}>{tds}</tr>
-        // );
-        /*****/
+    renderItem = (item, index, arr)=>{
         let tds=[];
-        for(let key in item){
+        for(let idx in this.props.columns){
             tds.push(
-                <td key={key}>{item[key]}</td>
+                <td key={this.props.columns[idx]}>{item[this.props.columns[idx]]}</td>
             );
         }
-
         return (
             <tr key={index}>{tds}</tr>
         );
@@ -53,14 +43,19 @@ export default class DataTable extends Component{
         if(this.props.items.length==0)return(<div></div>)
 
         return (
-            <table>
+            <Table striped bordered condensed hover>
                 <thead>
-                    {this.renderHeader(this.props.items[0])}
+                    {this.renderHeader()}
                 </thead>
                 <tbody>
                     {this.props.items.map(this.renderItem)}
                 </tbody>
-            </table>
+            </Table>
         )
     }
 }
+
+
+DataTable = localize()(DataTable)
+
+export default DataTable

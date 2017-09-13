@@ -4,6 +4,7 @@ import logo from 'logo.svg';
 import React, { Component } from 'react';
 import * as scenes from './index';
 import {Route} from 'react-router-dom';
+import LanguageDropDown from 'container/common/LanguageDropDown'
 
 class MainScene extends Component{
     render(){
@@ -21,6 +22,7 @@ class MainScene extends Component{
                     </Col>
                     <Col lg={2}>
                         <h5>Welcome, User</h5>
+                        <LanguageDropDown/>
                     </Col>
                 </Row>
 
