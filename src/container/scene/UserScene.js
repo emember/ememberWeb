@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UserTable from '../common/UserTable'
-class UserPage extends  Component{
+class UserScene extends  Component{
     render(){
         return(
             <UserTable>Users</UserTable>
@@ -9,4 +9,4 @@ class UserPage extends  Component{
 }
 
 
-export default UserPage
+export {UserScene}

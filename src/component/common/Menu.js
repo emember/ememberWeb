@@ -12,7 +12,7 @@ class Menu extends Component
     render(){
         let items=this.props.menuItems.map((item,index,arr)=>{
             return(
-                <LinkContainer to={item.url} key={index} activeHref="active">
+                <LinkContainer to={item.url} key={index} activeHref="active" exact={item.exact}>
                     <NavItem >{item.name}</NavItem>
                 </LinkContainer>
             )

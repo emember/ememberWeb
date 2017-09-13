@@ -8,11 +8,11 @@ class Member extends  Component{
     }
 
     static defaultProps={
-        loginUser: null//{email:'aaaa@bbb.com', password:'bbbbb'}
+        loginUser: {email:'aaaa@bbb.com', password:'bbbbb', verified:true}
     }
 
     render(){
-        if(this.props.loginUser){
+        if(this.props.loginUser.verified){
             return(
                 <h1>Member Scene</h1>
             )

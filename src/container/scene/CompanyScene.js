@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class CompanyPage extends  Component{
+class CompanyScene extends  Component{
     render(){
         return(
             <h1>Company settings</h1>
@@ -8,4 +8,4 @@ class CompanyPage extends  Component{
     }
 }
 
-export default CompanyPage
+export {CompanyScene}

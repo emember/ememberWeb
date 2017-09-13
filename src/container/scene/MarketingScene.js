@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class MarketingPage extends  Component{
+class MarketingScene extends  Component{
     render(){
         return(
             <h1>Marketing</h1>
@@ -8,4 +8,4 @@ class MarketingPage extends  Component{
     }
 }
 
-export default MarketingPage
+export {MarketingScene}

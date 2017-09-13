@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch =>{
 
 const MemberScene = connect(mapStateToProps, mapDispatchToProps)(Member)
 
-export default MemberScene
+export {MemberScene}

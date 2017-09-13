@@ -1,8 +1,8 @@
 import React,{Component}  from 'react';
 import PropTypes from 'prop-types'
 import LoginForm from './LoginForm'
-import MemberScene from 'container/scene/MemberScene'
-
+import {Redirect} from 'react-router-dom'
+import {Grid} from 'react-bootstrap'
 
 class Login extends Component{
     static propTypes={
@@ -18,14 +18,11 @@ class Login extends Component{
     }
 
     render(){
-        if(this.props.loginUser.verified){
-            return (
-                <MemberScene />
-            )
-        }
-
         return (
-            <LoginForm onSubmit={this.props.btnLoginClick} initialValues={this.props.loginUser}/>
+            <Grid>
+                <LoginForm onSubmit={this.props.btnLoginClick} initialValues={this.props.loginUser}/>
+                { this.props.loginUser.verified && (<Redirect to="/main" />)}
+            </Grid>
         )
     }
 }

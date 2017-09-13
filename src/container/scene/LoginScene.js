@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch =>{
 
 const LoginScene = connect(mapStateToProps, mapDispatchToProps)(Login)
 
-export default LoginScene
+export {LoginScene}

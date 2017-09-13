@@ -9,7 +9,6 @@ import {Field, reduxForm} from 'redux-form'
 
 class LoginForm extends Component{
     render(){
-        console.log('~~form props~~',this.props)
         const {handleSubmit} =this.props
         return (
             <Row>
