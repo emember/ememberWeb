@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import users from './users'
 import members from './members'
 import loginUser from './loginUser'
+import showModal from './showModal'
 
 import {i18nState} from 'redux-i18n'
 import {reducer as formReducer} from 'redux-form'
@@ -15,4 +16,6 @@ export default combineReducers({
 
     ,users:users
     ,members:members
+
+    ,showModal:showModal
 })

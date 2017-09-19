@@ -22,6 +22,8 @@ const initState={
     ,members:[]
     // ,userWip:{}
     // ,memberWip:{}
+
+    ,showModal:true
 }
 
 const createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);

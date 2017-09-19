@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {localize} from 'redux-i18n'
-import {Table} from 'react-bootstrap'
+import {Table, Modal, Button} from 'react-bootstrap'
+import EntityModal from './EntityModal'
 
 
 class DataTable extends Component{
@@ -9,6 +10,18 @@ class DataTable extends Component{
         items:PropTypes.array.isRequired
         ,fetchItems:PropTypes.func.isRequired
         ,columns:PropTypes.array.isRequired
+        ,rowClick:PropTypes.func.isRequired
+        ,showModal:PropTypes.bool.isRequired
+        ,closeModal:PropTypes.func.isRequired
+    }
+
+    static defaultProps={
+        items:[{"firstname":null,"userId":"c1aaa","email":null,"lastname":null},{"firstname":null,"userId":"companyAdminSys","email":"a@b.com","lastname":null},{"firstname":null,"userId":"888","email":null,"lastname":null},{"firstname":null,"userId":"b999","email":null,"lastname":null},{"firstname":null,"userId":null,"email":null,"lastname":null}]
+        ,fetchItems:()=>{}
+        ,columns:['userId', 'firstname', 'lastname', 'email']
+        ,rowClick:(item)=>{console.log('~~row click~~',item)}
+        ,showModal:true
+        ,closeModal:()=>{console.log('~~close modal click~~');this.props.showModal =false}
     }
 
     renderHeader(){
@@ -31,7 +44,7 @@ class DataTable extends Component{
             );
         }
         return (
-            <tr key={index}>{tds}</tr>
+            <tr key={index} onClick={()=>this.props.rowClick(item)}>{tds}</tr>
         );
     }
 
@@ -41,16 +54,18 @@ class DataTable extends Component{
 
     render(){
         if(this.props.items.length==0)return(<div></div>)
-
         return (
-            <Table striped bordered condensed hover>
-                <thead>
-                    {this.renderHeader()}
-                </thead>
-                <tbody>
-                    {this.props.items.map(this.renderItem)}
-                </tbody>
-            </Table>
+            <div>
+                <Table striped bordered condensed hover>
+                    <thead>
+                        {this.renderHeader()}
+                    </thead>
+                    <tbody>
+                        {this.props.items.map(this.renderItem)}
+                    </tbody>
+                </Table>
+                <EntityModal showModal={this.props.showModal} closeModal={this.props.closeModal}></EntityModal>
+            </div>
         )
     }
 }
