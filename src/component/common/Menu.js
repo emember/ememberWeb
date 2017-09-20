@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {Nav, NavItem} from 'react-bootstrap'
-import {IndexLinkContainer, LinkContainer} from 'react-router-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 import {localize} from 'redux-i18n'
 
 

@@ -14,7 +14,7 @@ const initState={
          ,{name:'marketing',url:'/main/marketing', exact:false}
          ,{name:'reports',url:'/main/reports', exact:false}
          ,{name:'company',url:'/main/company', exact:false}
-         ,{name:'users',url:'/main/user', exact:false}
+         ,{name:'users',url:'/main/users', exact:false}
          // ,{name:'Logout',url:'/logout'}
      ]
     ,loginUser:{username:'111@222.com', password:'111', verified:false}
@@ -22,8 +22,6 @@ const initState={
     ,members:[]
     // ,userWip:{}
     // ,memberWip:{}
-
-    ,showModal:true
 }
 
 const createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);
