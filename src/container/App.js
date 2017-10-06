@@ -6,7 +6,8 @@ import * as scenes from './scene';
 
 // import Login from 'component/scene/login/Login';
 // import Member from 'component/scene/member/Member';
-import DataTable from 'component/common/DataTable';
+import User from 'component/scene/user/User';
+import EntityForm from 'component/common/EntityForm';
 
 const history = createBrowserHistory()
 
@@ -15,7 +16,7 @@ const App =()=>(
         <div>
             <Route exact path="/" component={scenes.LoginScene}/>
             <Route path="/main" component={scenes.MainScene}/>
-            <Route path="/test" component={DataTable}/>
+            <Route path="/main/test" component={User}/>
         </div>
     </Router>
     )

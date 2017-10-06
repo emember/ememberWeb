@@ -1,6 +1,6 @@
 import {RSAA} from 'redux-api-middleware'
 
-let endpoint='http://10.1.11.12:8000'
+let endpoint='http://10.1.11.75:8000'
 
 export const USER_LIST_REQUEST ='USER_LIST_REQUEST'
 export const USER_LIST_FAILURE ='USER_LIST_FAILURE'
@@ -15,6 +15,33 @@ export function userList() {
             ,headers: { 'Content-Type': 'application/json' }
             ,body: JSON.stringify({entity:'user', func:'list'})
         }
+    }
+}
+
+export const USER_SAVE_REQUEST ='USER_SAVE_REQUEST'
+export const USER_SAVE_FAILURE ='USER_SAVE_FAILURE'
+export const USER_SAVE_SUCCESS ='USER_SAVE_SUCCESS'
+
+export function userSave(user) {
+    console.log('~~user save~~',user);
+    return {
+        [RSAA]:{
+            endpoint:endpoint
+            ,method:'POST'
+            ,types:[USER_SAVE_REQUEST,USER_SAVE_SUCCESS,USER_SAVE_FAILURE]
+            ,headers: { 'Content-Type': 'application/json' }
+            ,body: JSON.stringify({entity:'user', func:'save', user:user})
+        }
+    }
+}
+
+
+export const USER_SELECT ='USER_SELECT'
+export function userSelect(user, selected) {
+    return {
+        type:USER_SELECT,
+        user:user,
+        selected:selected
     }
 }
 
@@ -47,13 +74,5 @@ export function memberList() {
             ,headers: { 'Content-Type': 'application/json' }
             ,body: JSON.stringify({entity:'member', func:'list'})
         }
-    }
-}
-
-export const CLOSE_MODAL ='CLOSE_MODAL'
-export function closeModal() {
-    return {
-        type:CLOSE_MODAL,
-        showModal:false
     }
 }
