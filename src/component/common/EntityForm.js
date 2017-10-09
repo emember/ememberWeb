@@ -7,35 +7,29 @@ import {localize} from 'redux-i18n'
 
 class EntityForm extends Component{
     static propTypes={
-        entity:PropTypes.object.isRequired
+        fields:PropTypes.array
         ,show:PropTypes.bool.isRequired
         ,btnCancelClick:PropTypes.func.isRequired
-    }
-
-    static defaultProps={
-        entity:{"firstname":null,"userId":"c1aaa","email":null,"lastname":null}
-        ,show:false
     }
 
     render(){
         if(!this.props.show)return(<div></div>);
 
         const {handleSubmit} =this.props;
-        let keys= Object.keys(this.props.entity)
-        let fields=[];
+        let formFields=[];
 
-        for(let i in keys){
-            fields.push(
-                <FormGroup controlId={keys[i]} key={i}>
-                    <ControlLabel >{this.props.t(keys[i])}</ControlLabel>
-                    <Field name={keys[i]} type="input" placeholder={this.props.t(keys[i])} component={ReduxFormControl}/>
+        for(let i in this.props.fields){
+            formFields.push(
+                <FormGroup controlId={this.props.fields[i].key} key={i}>
+                    <ControlLabel >{this.props.t(this.props.fields[i].key)}</ControlLabel>
+                    <Field name={this.props.fields[i].key} type="input" placeholder={this.props.t(this.props.fields[i].key)} component={ReduxFormControl}/>
                 </FormGroup>
             )
         }
 
         return(
             <Form onSubmit={handleSubmit} >
-                {fields}
+                {formFields}
                 <FormGroup>
                     <Button type="button" onClick={this.props.btnCancelClick}>{this.props.t('cancel')}</Button>
                     <Button type="submit">{this.props.t('save')}</Button>

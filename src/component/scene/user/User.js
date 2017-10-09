@@ -13,9 +13,14 @@ class User extends Component{
         super(props);
         this.state = {
             showEntityForm:false
-            ,entity:{}
-            ,defaultEntity:{firstname: null, userId: null, email: null, lastname: null}
-            ,bulkEditProps:{aaa:null, bbb:null}
+            ,fields:[]
+            ,entityModalTitle:''
+            ,columns:[
+                {key:'userId', editable:false, bulkEidt:false},
+                {key:'firstname', editable:true, bulkEidt:false},
+                {key:'lastname', editable:true, bulkEidt:true},
+                {key:'email', editable:false, bulkEidt:false}
+            ]
         };
     }
 
@@ -24,14 +29,9 @@ class User extends Component{
         ,wipItems:PropTypes.array.isRequired
         ,fetchItems:PropTypes.func.isRequired
         ,saveItems:PropTypes.func.isRequired
-        ,columns:PropTypes.array.isRequired
         ,toggleItem:PropTypes.func.isRequired
-    }
-
-    static defaultProps={
-        items:[{"firstname":null,"userId":"c1aaa","email":null,"lastname":null},{"firstname":null,"userId":"companyAdminSys","email":"a@b.com","lastname":null},{"firstname":null,"userId":"888","email":null,"lastname":null},{"firstname":null,"userId":"b999","email":null,"lastname":null},{"firstname":null,"userId":null,"email":null,"lastname":null}]
-        ,fetchItems:()=>{}
-        ,columns:['userId', 'firstname', 'lastname', 'email']
+        ,showEntityModal:PropTypes.bool
+        ,entityModalMsg:PropTypes.object
     }
 
     closeEntityForm(){
@@ -47,7 +47,11 @@ class User extends Component{
     }
 
     openEntityModal(){
-        this.setState({entity: this.props.wipItems.length==1?this.props.wipItems[0]:this.state.bulkEditProps, showEntityModal: true});
+        this.setState({
+            fields: this.props.wipItems.length==1?this.state.columns:this.state.columns.map(item=>item.bulkEidt==true)
+        });
+        console.log(this.state.fields);
+        this.props.toggleEntityModal(true);
     }
     render(){
         // console.log('~~test 111~~',this.props.wipItems);
@@ -78,10 +82,14 @@ class User extends Component{
                     </Row>
 
                     <EntityModal
-                        show={this.state.showEntityModal}
-                        cancelFunc={()=>this.closeEntityModal()}
-                        entity={this.state.entity}
+                        show={this.props.showEntityModal}
+                        title={this.state.entityModalTitle}
+                        fields={this.state.fields}
+                        entity ={this.props.wipItems.length==1?this.props.wipItems[0]:{}}
+                        cancelFunc={()=>this.props.toggleEntityModal(false)}
                         saveFunc={this.props.saveItems}
+                        alertStyle={this.props.entityModalMsg.style}
+                        alertMsg={this.props.entityModalMsg.msg}
                     />
                 </div>
             )

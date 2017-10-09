@@ -24,12 +24,12 @@ const initState={
     // ,memberWip:{}
 }
 
-const createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 const AppStore = createStoreWithMiddleware(
     reducer,
     initState,
-    applyMiddleware(thunk)
+    applyMiddleware(apiMiddleware,thunk)
 );
 
 export default AppStore

@@ -2,6 +2,7 @@ import {RSAA} from 'redux-api-middleware'
 
 let endpoint='http://10.1.11.75:8000'
 
+
 export const USER_LIST_REQUEST ='USER_LIST_REQUEST'
 export const USER_LIST_FAILURE ='USER_LIST_FAILURE'
 export const USER_LIST_SUCCESS ='USER_LIST_SUCCESS'
@@ -23,15 +24,20 @@ export const USER_SAVE_FAILURE ='USER_SAVE_FAILURE'
 export const USER_SAVE_SUCCESS ='USER_SAVE_SUCCESS'
 
 export function userSave(user) {
-    console.log('~~user save~~',user);
-    return {
-        [RSAA]:{
-            endpoint:endpoint
-            ,method:'POST'
-            ,types:[USER_SAVE_REQUEST,USER_SAVE_SUCCESS,USER_SAVE_FAILURE]
-            ,headers: { 'Content-Type': 'application/json' }
-            ,body: JSON.stringify({entity:'user', func:'save', user:user})
-        }
+    return async(dispatch, getState)=>{
+        const actionResponse = await dispatch({
+            [RSAA]: {
+                endpoint: endpoint
+                , method: 'POST'
+                , types: [USER_SAVE_REQUEST, USER_SAVE_SUCCESS, USER_SAVE_FAILURE]
+                , headers: {'Content-Type': 'application/json'}
+                , body: JSON.stringify({entity: 'user', func: 'save', user: user})
+            }
+        });
+
+        if (actionResponse.type === USER_SAVE_SUCCESS)
+            return dispatch(userList());
+        else  return actionResponse;
     }
 }
 
@@ -44,6 +50,26 @@ export function userSelect(user, selected) {
         selected:selected
     }
 }
+
+export const TOGGLE_ENTITY_MODAL ='TOGGLE_ENTITY_MODAL'
+export function toggleEntityModal(status) {
+    return {
+        type:TOGGLE_ENTITY_MODAL,
+        status:status
+    }
+}
+
+export const SET_ENTITY_MODAL_MSG ='SET_ENTITY_MODAL_MSG'
+export function setEntityModalMsg(msg) {
+    return {
+        type:SET_ENTITY_MODAL_MSG,
+        msg:msg
+    }
+}
+
+
+
+
 
 export const USER_LOGIN_REQUEST ='USER_LOGIN_REQUEST'
 export const USER_LOGIN_FAILURE ='USER_LOGIN_FAILURE'
