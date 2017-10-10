@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import DataTable from 'component/common/DataTable'
 import {Row, Button,Col} from 'react-bootstrap'
 import {localize} from 'redux-i18n'
-import EntityForm from 'component/common/EntityForm'
-import EntityModal from 'component/common/EntityModal'
+// import EntityForm from 'component/common/EntityForm'
+import EntityModalC from 'container/common/EntityModalC'
 
 
 
@@ -81,15 +81,14 @@ class User extends Component{
                             {/*initialValues={this.state.entity}/>*/}
                     </Row>
 
-                    <EntityModal
-                        show={this.props.showEntityModal}
+                    <EntityModalC
+                        // show={this.props.showEntityModal}
                         title={this.state.entityModalTitle}
                         fields={this.state.fields}
                         entity ={this.props.wipItems.length==1?this.props.wipItems[0]:{}}
-                        cancelFunc={()=>this.props.toggleEntityModal(false)}
-                        saveFunc={this.props.saveItems}
-                        alertStyle={this.props.entityModalMsg.style}
-                        alertMsg={this.props.entityModalMsg.msg}
+                        saveFunc={()=>{console.log('~~~~blabalabalabal~~~~')}} //this.props.saveItems
+                        // alertStyle={this.props.entityModalMsg.style}
+                        // alertMsg={this.props.entityModalMsg.msg}
                     />
                 </div>
             )

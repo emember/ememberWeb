@@ -51,11 +51,11 @@ export function userSelect(user, selected) {
     }
 }
 
-export const TOGGLE_ENTITY_MODAL ='TOGGLE_ENTITY_MODAL'
-export function toggleEntityModal(status) {
+export const CONFIG_ENTITY_MODAL ='CONFIG_ENTITY_MODAL'
+export function toggleEntityModal(config) {
     return {
-        type:TOGGLE_ENTITY_MODAL,
-        status:status
+        type:CONFIG_ENTITY_MODAL,
+        config:config
     }
 }
 

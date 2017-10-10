@@ -7,31 +7,32 @@ import EntityForm from './EntityForm';
 class EntityModal extends Component{
 
     static propTypes={
-        show:PropTypes.bool.isRequired
-        ,title:PropTypes.object
-        ,fields:PropTypes.array
-        ,entity:PropTypes.object
+        config:PropTypes.object
+        // show:PropTypes.bool.isRequired
+        // ,title:PropTypes.object
+        // ,fields:PropTypes.array
+        // ,entity:PropTypes.object
+        // ,alert:PropTypes.object
         ,cancelFunc:PropTypes.func.isRequired
         ,saveFunc:PropTypes.func.isRequired
-        ,alertStyle:PropTypes.string
-        ,alertMsg:PropTypes.string
     }
 
     render(){
+        console.log();
         return(
-            <Modal show={this.props.show}>
+            <Modal show={this.props.config.show}>
                 <Modal.Header>
-                    <Modal.Title>{this.props.title}</Modal.Title>
+                    <Modal.Title>{this.props.config.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <EntityForm
                         show={true}
-                        fields={this.props.fields}
+                        fields={this.props.config.fields}
+                        initialValues={this.props.config.entity}
                         btnCancelClick={this.props.cancelFunc}
-                        initialValues={this.props.entity}
                         onSubmit={this.props.saveFunc}
                     />
-                    <Alert bsStyle={this.props.alertStyle}>{this.props.alertMsg}</Alert>
+                    <Alert bsStyle={this.props.config.alert.style}>{this.props.config.alert.msg}</Alert>
                 </Modal.Body>
             </Modal>
         )
