@@ -35,7 +35,7 @@ class MainScene extends Component{
                         <Route path="/main/marketing" component={scenes.MarketingScene}/>
                         <Route path="/main/reports" component={scenes.ReportScene}/>
                         <Route path="/main/company" component={scenes.CompanyScene}/>
-                        <Route path="/main/users" component={scenes.UserScene}/>
+                        <Route path="/main/users" component={scenes.UserC}/>
                     </Col>
                 </Row>
             </Grid>

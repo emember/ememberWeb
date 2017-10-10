@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import users from './users'
-import wipUsers from './wipUsers'
+import wipItems from './wipItems'
 import members from './members'
 import loginUser from './loginUser'
 import entityModalConfig from './entityModalConfig'
@@ -16,7 +16,7 @@ export default combineReducers({
     ,menuItems:(state=[]) => state
 
     ,users:users
-    ,wipUsers:wipUsers
+    ,wipItems:wipItems
     ,members:members
     ,entityModalConfig:entityModalConfig
 })

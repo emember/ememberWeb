@@ -20,7 +20,7 @@ const initState={
     ,loginUser:{username:'111@222.com', password:'111', verified:false}
     ,users:[]
     ,members:[]
-    // ,wipUsers:[]
+    // ,wipItems:[]
     // ,memberWip:{}
 }
 

@@ -1,7 +1,6 @@
 import EntityModal from '../../component/common/EntityModal';
-import {toggleEntityModal} from '../../action/Action'
+import {configEntityModal} from '../../action/Action'
 import {connect} from 'react-redux'
-import {setLanguage} from 'redux-i18n'
 
 const mapStateToProps = state=>{
     return{
@@ -16,11 +15,13 @@ const mapStateToProps = state=>{
 
 const mapDispatchToProps = dispatch =>{
     return {
-        cancelFunc:()=>{dispatch(toggleEntityModal(false))}
+        cancelFunc:()=>{
+            dispatch(configEntityModal({show:false}))
+        }
         // ,saveFunc:PropTypes.func.isRequired
     }
 }
 
-const EntityModalC = connect(mapStateToProps, null)(EntityModal)
+const EntityModalC = connect(mapStateToProps, mapDispatchToProps)(EntityModal)
 
 export default EntityModalC

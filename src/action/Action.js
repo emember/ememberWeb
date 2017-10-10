@@ -52,22 +52,12 @@ export function userSelect(user, selected) {
 }
 
 export const CONFIG_ENTITY_MODAL ='CONFIG_ENTITY_MODAL'
-export function toggleEntityModal(config) {
+export function configEntityModal(config) {
     return {
         type:CONFIG_ENTITY_MODAL,
         config:config
     }
 }
-
-export const SET_ENTITY_MODAL_MSG ='SET_ENTITY_MODAL_MSG'
-export function setEntityModalMsg(msg) {
-    return {
-        type:SET_ENTITY_MODAL_MSG,
-        msg:msg
-    }
-}
-
-
 
 
 

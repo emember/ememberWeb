@@ -1,14 +1,12 @@
 import {connect} from 'react-redux';
 import React, { Component } from 'react'
 import User from 'component/scene/user/User';
-import {userList, userSave, userSelect, toggleEntityModal} from '../../action/Action'
+import {userList, userSave, userSelect, configEntityModal} from '../../action/Action'
 
 const mapStateToProps = state=>{
     return{
         items:state.users
-        ,wipItems:state.wipUsers
-        ,showEntityModal:state.showEntityModal
-        ,entityModalMsg:state.entityModalMsg
+        ,wipItems:state.wipItems
     }
 }
 
@@ -24,9 +22,8 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 
         }
         ,toggleItem:(item, selected)=>{dispatch(userSelect(item, selected))}
-        ,toggleEntityModal:(emState)=>{dispatch(toggleEntityModal(emState))}
     }
 }
-const UserScene = connect(mapStateToProps, mapDispatchToProps)(User)
+const UserC = connect(mapStateToProps, mapDispatchToProps)(User)
 
-export {UserScene}
+export {UserC}

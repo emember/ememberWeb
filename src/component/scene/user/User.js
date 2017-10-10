@@ -5,6 +5,8 @@ import {Row, Button,Col} from 'react-bootstrap'
 import {localize} from 'redux-i18n'
 // import EntityForm from 'component/common/EntityForm'
 import EntityModalC from 'container/common/EntityModalC'
+import EntityButtonCreateC from 'container/common/EntityButtonCreateC'
+import EntityButtonEditC from 'container/common/EntityButtonEditC'
 
 
 
@@ -12,10 +14,7 @@ class User extends Component{
     constructor(props){
         super(props);
         this.state = {
-            showEntityForm:false
-            ,fields:[]
-            ,entityModalTitle:''
-            ,columns:[
+            columns:[
                 {key:'userId', editable:false, bulkEidt:false},
                 {key:'firstname', editable:true, bulkEidt:false},
                 {key:'lastname', editable:true, bulkEidt:true},
@@ -61,14 +60,17 @@ class User extends Component{
             return(
                 <div >
                     <Row>
-                        <Button onClick={()=>this.openEntityModal(this.state.defaultEntity)}>{this.props.t('create')}</Button>
-                        <Button disabled={this.props.wipItems.length==0} onClick={()=>this.openEntityModal()} >{this.props.t('edit')}</Button>
-                        <Button >{this.props.t('delete')}</Button>
+                        <EntityButtonCreateC para={this.state.columns}/>
+                        <EntityButtonEditC para={{
+                            fields:this.props.wipItems.length==1? this.state.columns:this.state.columns.filter(item=>item.bulkEidt==true)
+                            ,entity:this.props.wipItems.length==1?this.props.wipItems[0]:{}
+                        }} />
+                        {/*<Button >{this.props.t('delete')}</Button>*/}
                     </Row>
                     <Row>
                         <DataTable
                             items={this.props.items}
-                            columns={this.props.columns}
+                            columns={this.state.columns.map(item=>item.key)}
                             fetchItems={this.props.fetchItems}
                             toggleSelection={(entity, selected)=>this.props.toggleItem(entity, selected)}
                         />
@@ -82,13 +84,7 @@ class User extends Component{
                     </Row>
 
                     <EntityModalC
-                        // show={this.props.showEntityModal}
-                        title={this.state.entityModalTitle}
-                        fields={this.state.fields}
-                        entity ={this.props.wipItems.length==1?this.props.wipItems[0]:{}}
                         saveFunc={()=>{console.log('~~~~blabalabalabal~~~~')}} //this.props.saveItems
-                        // alertStyle={this.props.entityModalMsg.style}
-                        // alertMsg={this.props.entityModalMsg.msg}
                     />
                 </div>
             )

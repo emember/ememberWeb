@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Modal, Button, FormGroup, ControlLabel, Field, Form, Alert} from 'react-bootstrap'
 import ReduxFormControl from './ReduxFormControl';
 import EntityForm from './EntityForm';
+import {localize} from 'redux-i18n';
 
 class EntityModal extends Component{
 
@@ -22,7 +23,7 @@ class EntityModal extends Component{
         return(
             <Modal show={this.props.config.show}>
                 <Modal.Header>
-                    <Modal.Title>{this.props.config.title}</Modal.Title>
+                    <Modal.Title>{this.props.t(this.props.config.title)}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <EntityForm
@@ -39,4 +40,5 @@ class EntityModal extends Component{
     }
 }
 
+EntityModal = localize()(EntityModal)
 export default EntityModal

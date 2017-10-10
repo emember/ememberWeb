@@ -12,15 +12,6 @@ class DataTable extends Component{
         ,toggleSelection:PropTypes.func
     }
 
-    static defaultProps={
-        items:[{"firstname":null,"userId":"c1aaa","email":null,"lastname":null},{"firstname":null,"userId":"companyAdminSys","email":"a@b.com","lastname":null},{"firstname":null,"userId":"888","email":null,"lastname":null},{"firstname":null,"userId":"b999","email":null,"lastname":null},{"firstname":null,"userId":null,"email":null,"lastname":null}]
-        ,fetchItems:()=>{}
-        ,columns:['userId', 'firstname', 'lastname', 'email']
-        ,toggleSelection:(item, e)=>{
-            console.log(e, '~~~lalalal~~', item);
-        }
-    }
-
     renderHeader(){
         let ths=[]
         ths.push(
