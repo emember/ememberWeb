@@ -18,6 +18,10 @@ export const translations = {
         "save":"Save",
         "edit":"Edit",
         "delete":"Delete",
+        "deleteConfirm":"Are sure to delete ?",
+        "":"",
+        "":"",
+        "":"",
         "":"",
    },
 

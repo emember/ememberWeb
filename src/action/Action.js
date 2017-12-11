@@ -1,4 +1,5 @@
 import {RSAA} from 'redux-api-middleware'
+import {batchActions} from 'redux-batched-actions';
 
 let endpoint='http://10.1.11.75:8000'
 
@@ -24,6 +25,7 @@ export const USER_SAVE_FAILURE ='USER_SAVE_FAILURE'
 export const USER_SAVE_SUCCESS ='USER_SAVE_SUCCESS'
 
 export function userSave(user) {
+    console.log('~~action user save~~~',user);
     return async(dispatch, getState)=>{
         const actionResponse = await dispatch({
             [RSAA]: {
@@ -36,10 +38,43 @@ export function userSave(user) {
         });
 
         if (actionResponse.type === USER_SAVE_SUCCESS)
-            return dispatch(userList());
+            return dispatch(batchActions([
+                    dispatch(userList())
+                    ,configEntityModal({show:false})
+                ])
+            );
         else  return actionResponse;
     }
 }
+
+export const USER_DELETE_REQUEST ='USER_DELETE_REQUEST'
+export const USER_DELETE_FAILURE ='USER_DELETE_FAILURE'
+export const USER_DELETE_SUCCESS ='USER_DELETE_SUCCESS'
+
+export function userDelete(userIds) {
+    return async(dispatch, getState)=>{
+        const actionResponse = await dispatch({
+            [RSAA]: {
+                endpoint: endpoint
+                , method: 'POST'
+                , types: [USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DELETE_FAILURE]
+                , headers: {'Content-Type': 'application/json'}
+                , body: JSON.stringify({entity: 'user', func: 'remove', userIds: userIds})
+            }
+        });
+
+        console.log('~~action user delete ~~',actionResponse);
+
+        if (actionResponse.type === USER_DELETE_SUCCESS)
+            return dispatch(batchActions([
+                    dispatch(userList())
+                    // ,configEntityModal({show:false})
+                ])
+            );
+        else  return actionResponse;
+    }
+}
+
 
 
 export const USER_SELECT ='USER_SELECT'
@@ -59,6 +94,13 @@ export function configEntityModal(config) {
     }
 }
 
+export const CONFIG_CONFIRM_MODAL ='CONFIG_CONFIRM_MODAL'
+export function configConfirmModal(config) {
+    return {
+        type:CONFIG_CONFIRM_MODAL,
+        config:config
+    }
+}
 
 
 export const USER_LOGIN_REQUEST ='USER_LOGIN_REQUEST'

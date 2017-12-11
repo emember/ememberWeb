@@ -7,7 +7,8 @@ import {localize} from 'redux-i18n'
 import EntityModalC from 'container/common/EntityModalC'
 import EntityButtonCreateC from 'container/common/EntityButtonCreateC'
 import EntityButtonEditC from 'container/common/EntityButtonEditC'
-
+import EntityButtonDeleteC from 'container/common/EntityButtonDeleteC'
+import ConfirmModalC from "container//common/ConfirmModalC";
 
 
 class User extends Component{
@@ -28,6 +29,7 @@ class User extends Component{
         ,wipItems:PropTypes.array.isRequired
         ,fetchItems:PropTypes.func.isRequired
         ,saveItems:PropTypes.func.isRequired
+        ,deleteItems:PropTypes.func.isRequired
         ,toggleItem:PropTypes.func.isRequired
         ,showEntityModal:PropTypes.bool
         ,entityModalMsg:PropTypes.object
@@ -65,7 +67,7 @@ class User extends Component{
                             fields:this.props.wipItems.length==1? this.state.columns:this.state.columns.filter(item=>item.bulkEidt==true)
                             ,entity:this.props.wipItems.length==1?this.props.wipItems[0]:{}
                         }} />
-                        {/*<Button >{this.props.t('delete')}</Button>*/}
+                        <EntityButtonDeleteC para={this.props.wipItems.map(item=>{return item['userId']})}/>
                     </Row>
                     <Row>
                         <DataTable
@@ -83,9 +85,8 @@ class User extends Component{
                             {/*initialValues={this.state.entity}/>*/}
                     </Row>
 
-                    <EntityModalC
-                        saveFunc={()=>{console.log('~~~~blabalabalabal~~~~')}} //this.props.saveItems
-                    />
+                    <EntityModalC saveFunc={this.props.saveItems} />
+                    <ConfirmModalC yesFunc ={this.props.deleteItems}/>
                 </div>
             )
         }

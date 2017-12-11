@@ -9,11 +9,6 @@ class EntityModal extends Component{
 
     static propTypes={
         config:PropTypes.object
-        // show:PropTypes.bool.isRequired
-        // ,title:PropTypes.object
-        // ,fields:PropTypes.array
-        // ,entity:PropTypes.object
-        // ,alert:PropTypes.object
         ,cancelFunc:PropTypes.func.isRequired
         ,saveFunc:PropTypes.func.isRequired
     }

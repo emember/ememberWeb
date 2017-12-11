@@ -1,6 +1,8 @@
 import {createStore, applyMiddleware} from 'redux'
 import reducer from 'reducer'
 import {apiMiddleware} from 'redux-api-middleware'
+import {enableBatching} from 'redux-batched-actions';
+
 import thunk from 'redux-thunk'
 import * as Action from '../action/Action'
 
@@ -27,7 +29,7 @@ const initState={
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 const AppStore = createStoreWithMiddleware(
-    reducer,
+    enableBatching(reducer),
     initState,
     applyMiddleware(apiMiddleware,thunk)
 );

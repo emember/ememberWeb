@@ -5,11 +5,6 @@ import {connect} from 'react-redux'
 const mapStateToProps = state=>{
     return{
         config:state.entityModalConfig
-        // show:state.entityModalShow
-        // ,title:state.entityModalTitle
-        // ,fields:state.entityModalFields
-        // ,entity:state.entityModalEntity
-        // ,alert:state.entityModalAlert
     }
 }
 
