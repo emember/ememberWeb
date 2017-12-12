@@ -32,11 +32,10 @@ class MainScene extends Component{
                     </Col>
 
                     <Col lg={10}>
-                        <Route exact path={this.props.match.path} component={scenes.MemberScene}/>
                         <Route path="/main/marketing" component={scenes.MarketingScene}/>
                         <Route path="/main/reports" component={scenes.ReportScene}/>
                         <Route path="/main/company" component={scenes.CompanyScene}/>
-                        <Route path="/main/user" component={scenes.UserScene}/>
+                        <Route path="/main/users" component={scenes.UserC}/>
                     </Col>
                 </Row>
             </Grid>

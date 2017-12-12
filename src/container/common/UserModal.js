@@ -5,15 +5,16 @@ import {userList} from '../../action/Action'
 
 const mapStateToProps = state=>{
     return{
-        items:state.users
-        ,columns:['userId', 'firstname', 'lastname', 'email']
+        items:state.users,
+        columns:['userId', 'firstname', 'lastname', 'email']
     }
 }
 
 const mapDispatchToProps = dispatch =>{
     return {
-        fetchItems:()=>{dispatch(userList())}
-        ,toEdit:()=>{this.props.history.push('/main/user/1');}
+        fetchItems:()=>{
+            dispatch(userList())
+        }
     }
 }
 

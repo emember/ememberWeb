@@ -13,6 +13,15 @@ export const translations = {
         "lastname":"Last Name",
         "userId":"User Id",
         "email":"Email",
+        "create":"Create",
+        "cancel":"Cancel",
+        "save":"Save",
+        "edit":"Edit",
+        "delete":"Delete",
+        "deleteConfirm":"Are sure to delete ?",
+        "":"",
+        "":"",
+        "":"",
         "":"",
    },
 
@@ -30,6 +39,11 @@ export const translations = {
         "lastname":"姓",
         "userId":"用户ID",
         "email":"邮件",
+        "create":"新建",
+        "cancel":"取消",
+        "save":"保存",
+        "edit":"编辑",
+        "delete":"删除",
         "":"",
     }
 }

@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {localize} from 'redux-i18n'
-import {Table} from 'react-bootstrap'
-
+import {Table, Row, Button} from 'react-bootstrap'
+import EntityForm from './EntityForm'
 
 class DataTable extends Component{
     static propTypes={
         items:PropTypes.array.isRequired
         ,fetchItems:PropTypes.func.isRequired
         ,columns:PropTypes.array.isRequired
+        ,toggleSelection:PropTypes.func
     }
 
     renderHeader(){
         let ths=[]
-        for(let idx in this.props.columns){
+        ths.push(
+            <th key={this.props.columns[0]}><input type='checkbox'/></th>
+        );
+        for(let idx=1;idx<this.props.columns.length;idx++){
             ths.push(
                 <th key={this.props.columns[idx]}>{this.props.t(this.props.columns[idx])}</th>
             )
@@ -26,10 +30,17 @@ class DataTable extends Component{
     renderItem = (item, index, arr)=>{
         let tds=[];
         for(let idx in this.props.columns){
-            tds.push(
-                <td key={this.props.columns[idx]}>{item[this.props.columns[idx]]}</td>
-            );
+            if(idx==0){
+                tds.push(
+                    <td key={this.props.columns[idx]}><input type='checkbox' value={item[this.props.columns[idx]]} onChange={(e)=>this.props.toggleSelection(item, e.target.checked)}/></td>
+                );
+            }else {
+                tds.push(
+                    <td key={this.props.columns[idx]}>{item[this.props.columns[idx]]}</td>
+                );
+            }
         }
+
         return (
             <tr key={index}>{tds}</tr>
         );
