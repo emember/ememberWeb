@@ -1,7 +1,8 @@
 import {RSAA} from 'redux-api-middleware'
 import {batchActions} from 'redux-batched-actions';
 
-let endpoint='http://10.1.11.75:8000'
+// let endpoint='http://10.1.11.75:8000'
+let endpoint='http://localhost:8000'
 
 
 export const USER_LIST_REQUEST ='USER_LIST_REQUEST'
@@ -68,7 +69,7 @@ export function userDelete(userIds) {
         if (actionResponse.type === USER_DELETE_SUCCESS)
             return dispatch(batchActions([
                     dispatch(userList())
-                    // ,configEntityModal({show:false})
+                    ,configConfirmModal({show:false})
                 ])
             );
         else  return actionResponse;

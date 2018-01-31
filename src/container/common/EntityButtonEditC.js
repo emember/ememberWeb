@@ -13,7 +13,8 @@ const mapDispatchToProps = (dispatch, ownProps )=>{
     return {
         onClick:()=>{
             dispatch(configEntityModal({
-                title:'edit',show:true,
+                title:'edit',
+                show:true,
                 fields:ownProps.para.fields,
                 entity:ownProps.para.entity
             }))

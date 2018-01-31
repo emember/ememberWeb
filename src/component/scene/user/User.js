@@ -86,7 +86,7 @@ class User extends Component{
                     </Row>
 
                     <EntityModalC saveFunc={this.props.saveItems} />
-                    <ConfirmModalC yesFunc ={this.props.deleteItems}/>
+                    <ConfirmModalC yesFunc ={()=>this.props.deleteItems(this.props.wipItems.map(item=>{return item['userId']}))}/>
                 </div>
             )
         }

@@ -16,9 +16,8 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
         ,saveItems:(entity)=>{
             dispatch(userSave(entity));
         }
-        ,deleteItems:()=>{
-            console.log('~~~~~hahaha~~',ownProps.items);
-            dispatch(userDelete(ownProps.wipItems))
+        ,deleteItems:(ids)=>{
+            dispatch(userDelete(ids))
         }
         ,toggleItem:(item, selected)=>{dispatch(userSelect(item, selected))}
     }
