@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DataTable from 'component/common/DataTable'
+import Pager from 'component/common/Pager'
 import {Row, Button,Col} from 'react-bootstrap'
 import {localize} from 'redux-i18n'
 // import EntityForm from 'component/common/EntityForm'
@@ -8,8 +9,8 @@ import EntityModalC from 'container/common/EntityModalC'
 import EntityButtonCreateC from 'container/common/EntityButtonCreateC'
 import EntityButtonEditC from 'container/common/EntityButtonEditC'
 import EntityButtonDeleteC from 'container/common/EntityButtonDeleteC'
-import ConfirmModalC from "container//common/ConfirmModalC";
-
+import ConfirmModalC from "container/common/ConfirmModalC";
+import PageSizeDropDown from "container/common/PageSizeDropDown";
 
 class User extends Component{
     constructor(props){
@@ -25,9 +26,14 @@ class User extends Component{
     }
 
     static propTypes={
-        items:PropTypes.array.isRequired
+        entityData:PropTypes.object.isRequired
+        ,fromIdx:PropTypes.number.fromIdx
+        ,pageSize:PropTypes.number.isRequired
+        ,changePage:PropTypes.number.isRequired
+        ,entityUISelector:PropTypes.object.isRequired
+
         ,wipItems:PropTypes.array.isRequired
-        ,fetchItems:PropTypes.func.isRequired
+        ,fetchEntities:PropTypes.func.isRequired
         ,saveItems:PropTypes.func.isRequired
         ,deleteItems:PropTypes.func.isRequired
         ,toggleItem:PropTypes.func.isRequired
@@ -35,27 +41,13 @@ class User extends Component{
         ,entityModalMsg:PropTypes.object
     }
 
-    closeEntityForm(){
-        this.setState({showEntityForm: false})
+    componentWillMount(){
+        this.props.fetchEntities();
     }
 
-    openEntityForm(entity){
-        this.setState({entity: entity, showEntityForm: true});
-    }
-
-    closeEntityModal(){
-        this.setState({showEntityModal: false})
-    }
-
-    openEntityModal(){
-        this.setState({
-            fields: this.props.wipItems.length==1?this.state.columns:this.state.columns.map(item=>item.bulkEidt==true)
-        });
-        console.log(this.state.fields);
-        this.props.toggleEntityModal(true);
-    }
     render(){
-        // console.log('~~test 111~~',this.props.wipItems);
+        // console.log('~~test 111~~',this.props.pageSize);
+        console.log('~~test 111~~', this.props.entityUISelector);
 
         // if(this.props.loginUser.verified){
         if(true){
@@ -71,18 +63,21 @@ class User extends Component{
                     </Row>
                     <Row>
                         <DataTable
-                            items={this.props.items}
+                            items={this.props.entityUISelector.disPlayItems}
                             columns={this.state.columns.map(item=>item.key)}
-                            fetchItems={this.props.fetchItems}
+                            fetchItems={this.props.fetchEntities}
                             toggleSelection={(entity, selected)=>this.props.toggleItem(entity, selected)}
                         />
                     </Row>
                     <Row>
-                        {/*<EntityForm*/}
-                            {/*show={this.state.showEntityForm}*/}
-                            {/*entity={this.state.entity}*/}
-                            {/*btnCancelClick={this.closeEntityForm}*/}
-                            {/*initialValues={this.state.entity}/>*/}
+                        <Col><PageSizeDropDown /></Col>
+                        <Col>Showing from { this.props.entityUISelector.fromNo} to {this.props.entityUISelector.toIdx} of {this.props.entityData.totalCount} </Col>
+                        <Col><Pager
+                            activePage={this.props.entityUISelector.pageNo}
+                            pageCount={Math.ceil(this.props.entityData.totalCount/ this.props.pageSize)}
+                            onSelect={this.props.changePage}
+                            />
+                        </Col>
                     </Row>
 
                     <EntityModalC saveFunc={this.props.saveItems} />

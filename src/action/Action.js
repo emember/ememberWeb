@@ -9,14 +9,14 @@ export const USER_LIST_REQUEST ='USER_LIST_REQUEST'
 export const USER_LIST_FAILURE ='USER_LIST_FAILURE'
 export const USER_LIST_SUCCESS ='USER_LIST_SUCCESS'
 
-export function userList() {
+export function userList(para) {
     return {
         [RSAA]:{
             endpoint:endpoint
             ,method:'POST'
             ,types:[USER_LIST_REQUEST,USER_LIST_SUCCESS,USER_LIST_FAILURE]
             ,headers: { 'Content-Type': 'application/json' }
-            ,body: JSON.stringify({entity:'user', func:'list'})
+            ,body: JSON.stringify({entity:'user', func:'list', para:para})
         }
     }
 }
@@ -26,7 +26,6 @@ export const USER_SAVE_FAILURE ='USER_SAVE_FAILURE'
 export const USER_SAVE_SUCCESS ='USER_SAVE_SUCCESS'
 
 export function userSave(user) {
-    console.log('~~action user save~~~',user);
     return async(dispatch, getState)=>{
         const actionResponse = await dispatch({
             [RSAA]: {
@@ -76,6 +75,30 @@ export function userDelete(userIds) {
     }
 }
 
+export const SET_PAGE_SIZE ='SET_PAGE_SIZE'
+export function setPageSize(pageSize) {
+    return {
+        type:SET_PAGE_SIZE,
+        pageSize:pageSize
+    }
+}
+
+
+export const CALCULATE_FROM_IDX ='CALCULATE_FROM_IDX'
+export function calculateFromIdx(selectedPage, pageSize) {
+    return {
+        type:CALCULATE_FROM_IDX,
+        fromIdx:pageSize*(selectedPage-1)
+    }
+}
+
+export const CHANGE_TOTAL_COUNT ='CHANGE_TOTAL_COUNT'
+export function changeTotalCount(totalCount) {
+    return {
+        type:CHANGE_TOTAL_COUNT,
+        totalCount:totalCount
+    }
+}
 
 
 export const USER_SELECT ='USER_SELECT'

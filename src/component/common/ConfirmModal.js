@@ -8,13 +8,12 @@ import {localize} from 'redux-i18n';
 class ConfirmModal extends Component{
 
     static propTypes={
-        config:PropTypes.object
+        config:PropTypes.object.isRequired
         ,yesFunc:PropTypes.func.isRequired
         ,noFunc:PropTypes.func.isRequired
     }
 
     render(){
-        console.log();
         return(
             <Modal show={this.props.config.show}>
                 <Modal.Body>{ this.props.t(this.props.config.msg)}</Modal.Body>
