@@ -9,8 +9,10 @@ import EntityModalC from 'container/common/EntityModalC'
 import EntityButtonCreateC from 'container/common/EntityButtonCreateC'
 import EntityButtonEditC from 'container/common/EntityButtonEditC'
 import EntityButtonDeleteC from 'container/common/EntityButtonDeleteC'
+import EntityButtonFilterC from 'container/common/EntityButtonFilterC'
 import ConfirmModalC from "container/common/ConfirmModalC";
 import PageSizeDropDown from "container/common/PageSizeDropDown";
+import EntityFilterForm from "../../common/EntityFilterForm";
 
 class User extends Component{
     constructor(props){
@@ -21,6 +23,25 @@ class User extends Component{
                 {key:'firstname', editable:true, bulkEidt:false},
                 {key:'lastname', editable:true, bulkEidt:true},
                 {key:'email', editable:false, bulkEidt:false}
+            ],
+            filterDef:[
+                {
+                    field:'firstname'
+                    ,operator:[
+                        {
+                            key:'contains'
+                            ,value:'contains'
+                        }
+                    ]
+                },
+                {
+                    field:'lastname'
+                    ,operator:['contains', 'equal']
+                },
+                {
+                    field:'email'
+                    ,operator:['contains', 'equal']
+                }
             ]
         };
     }
@@ -47,7 +68,7 @@ class User extends Component{
 
     render(){
         // console.log('~~test 111~~',this.props.pageSize);
-        console.log('~~test 111~~', this.props.entityUISelector);
+        // console.log('~~test 111~~', this.props.entityUISelector);
 
         // if(this.props.loginUser.verified){
         if(true){
@@ -60,6 +81,10 @@ class User extends Component{
                             ,entity:this.props.wipItems.length==1?this.props.wipItems[0]:{}
                         }} />
                         <EntityButtonDeleteC para={this.props.wipItems.map(item=>{return item['userId']})}/>
+                        <EntityButtonFilterC para={this.props.wipItems.map(item=>{return item['userId']})}/>
+                    </Row>
+                    <Row>
+                        <EntityFilterForm filterDef={this.state.filterDef}></EntityFilterForm>
                     </Row>
                     <Row>
                         <DataTable

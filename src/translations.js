@@ -19,7 +19,7 @@ export const translations = {
         "edit":"Edit",
         "delete":"Delete",
         "deleteConfirm":"Are sure to delete ?",
-        "":"",
+        "filter":"Filter",
         "":"",
         "":"",
         "":"",
