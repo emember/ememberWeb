@@ -1,4 +1,4 @@
-export * from './LoginScene';
+export * from './LoginC';
 export * from './MainScene';
 export * from './MemberScene';
 export * from './MarketingScene';

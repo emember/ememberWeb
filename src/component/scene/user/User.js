@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import DataTable from 'component/common/DataTable'
+import DataTable from '../../common/DataTable'
 import {Row, Button,Col} from 'react-bootstrap'
 import {localize} from 'redux-i18n'
 // import EntityForm from 'component/common/EntityForm'
-import EntityModalC from 'container/common/EntityModalC'
-import EntityButtonCreateC from 'container/common/EntityButtonCreateC'
-import EntityButtonEditC from 'container/common/EntityButtonEditC'
-import EntityButtonDeleteC from 'container/common/EntityButtonDeleteC'
-import ConfirmModalC from "container//common/ConfirmModalC";
+import UserModal from './UserModal';
+import EntityButtonCreateC from '../../../container/common/EntityButtonCreateC'
+import EntityButtonEditC from '../../../container/common/EntityButtonEditC'
+import EntityButtonDeleteC from '../../../container/common/EntityButtonDeleteC'
+import ConfirmModalC from "../../../container/common/ConfirmModalC";
 
 
 class User extends Component{
@@ -16,9 +16,9 @@ class User extends Component{
         super(props);
         this.state = {
             columns:[
-                {key:'userId', editable:false, bulkEidt:false},
-                {key:'firstname', editable:true, bulkEidt:false},
-                {key:'lastname', editable:true, bulkEidt:true},
+                {key:'user_account_id', editable:false, bulkEidt:false},
+                {key:'first_name', editable:true, bulkEidt:false},
+                {key:'last_name', editable:true, bulkEidt:true},
                 {key:'email', editable:false, bulkEidt:false}
             ]
         };
@@ -67,7 +67,7 @@ class User extends Component{
                             fields:this.props.wipItems.length==1? this.state.columns:this.state.columns.filter(item=>item.bulkEidt==true)
                             ,entity:this.props.wipItems.length==1?this.props.wipItems[0]:{}
                         }} />
-                        <EntityButtonDeleteC para={this.props.wipItems.map(item=>{return item['userId']})}/>
+                        <EntityButtonDeleteC para={this.props.wipItems.map(item=>{return item['user_account_id']})}/>
                     </Row>
                     <Row>
                         <DataTable
@@ -85,7 +85,7 @@ class User extends Component{
                             {/*initialValues={this.state.entity}/>*/}
                     </Row>
 
-                    <EntityModalC saveFunc={this.props.saveItems} />
+                    <UserModal saveFunc={this.props.saveItems} />
                     <ConfirmModalC yesFunc ={this.props.deleteItems}/>
                 </div>
             )

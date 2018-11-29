@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import {localize} from 'redux-i18n'
-import {Table, Row, Button} from 'react-bootstrap'
-import EntityForm from './EntityForm'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {localize} from 'redux-i18n';
+import {Table, Row, Button} from 'react-bootstrap';
 
 class DataTable extends Component{
     static propTypes={

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Login from 'component/scene/login/Login';
-import {userLogin} from "action/Action"
+import {apiAction, USER_LOGIN_API} from "../../action/Action";
 
 const mapStateToProps = state=>{
     return{
@@ -12,11 +12,11 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = dispatch =>{
     return {
         btnLoginClick:(user)=>{
-            dispatch(userLogin(user));
+            dispatch(apiAction(USER_LOGIN_API,user));
         }
     }
 }
 
-const LoginScene = connect(mapStateToProps, mapDispatchToProps)(Login)
+const LoginC = connect(mapStateToProps, mapDispatchToProps)(Login)
 
-export {LoginScene}
+export {LoginC}
