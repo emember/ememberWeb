@@ -10,7 +10,7 @@ class EntityModal extends Component{
     static propTypes={
         config:PropTypes.object
         ,cancelFunc:PropTypes.func.isRequired
-        ,saveFunc:PropTypes.func.isRequired
+        ,updateFunc:PropTypes.func.isRequired
     }
 
     render(){
@@ -26,7 +26,7 @@ class EntityModal extends Component{
                         fields={this.props.config.fields}
                         initialValues={this.props.config.entity}
                         btnCancelClick={this.props.cancelFunc}
-                        onSubmit={this.props.saveFunc}
+                        onSubmit={this.props.updateFunc}
                     />
                     <Alert bsStyle={this.props.config.alert.style}>{this.props.config.alert.msg}</Alert>
                 </Modal.Body>

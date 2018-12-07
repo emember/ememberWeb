@@ -2,14 +2,12 @@ import {connect} from 'react-redux';
 import React, { Component } from 'react'
 import User from '../../component/scene/user/User';
 import {
-    userList,
-    userSave,
+    userUpdate,
+    userCreate,
     userSelect,
-    configEntityModal,
     userDelete,
     apiAction,
-    USER_LIST_API,
-    USER_SAVE_API
+    USER_LIST_API
 } from '../../action/Action'
 
 const mapStateToProps = state=>{
@@ -22,7 +20,8 @@ const mapStateToProps = state=>{
 const mapDispatchToProps = (dispatch, ownProps) =>{
     return {
         fetchItems:()=>{dispatch(apiAction(USER_LIST_API));}
-        ,saveItems:(entity)=>{dispatch(userSave(entity));}
+        ,updateItems:(entity)=>{dispatch(userUpdate(entity));}
+        ,createItem:(entity)=>{dispatch(userCreate(entity));}
         ,deleteItems:()=>{
             dispatch(userDelete(ownProps.wipItems))
         }

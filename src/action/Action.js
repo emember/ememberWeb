@@ -4,14 +4,18 @@ import {batchActions} from 'redux-batched-actions';
 const endpoint='http://localhost:8080'
 
 export function apiAction(apiDef, para={}) {
-    console.log('~~make api call ~~', apiDef);
+    console.log('~~api def ~~', apiDef, '~~para ~~',para);
     return {
         [RSAA]: {
             endpoint: endpoint
             , method: 'POST'
             , types: apiDef.actions
             , headers: {'Content-Type': 'application/json'}
-            , body: JSON.stringify({...{handler: apiDef.handler, func: apiDef.func}, ...para})
+            , body: JSON.stringify({
+                handler: apiDef.handler,
+                func: apiDef.func,
+                para:para
+            })
         }
     }
 }
@@ -34,21 +38,43 @@ export const USER_LIST_API={
     func:'list'
 }
 
-export const USER_SAVE_REQUEST ='USER_SAVE_REQUEST'
-export const USER_SAVE_FAILURE ='USER_SAVE_FAILURE'
-export const USER_SAVE_SUCCESS ='USER_SAVE_SUCCESS'
-export const USER_SAVE_API={
-    actions:[USER_SAVE_REQUEST, USER_SAVE_SUCCESS, USER_SAVE_FAILURE],
+export const USER_UPDATE_REQUEST ='USER_UPDATE_REQUEST'
+export const USER_UPDATE_FAILURE ='USER_UPDATE_FAILURE'
+export const USER_UPDATE_SUCCESS ='USER_UPDATE_SUCCESS'
+export const USER_UPDATE_API={
+    actions:[USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAILURE],
     handler:'user',
-    func:'save'
+    func:'update'
 }
 
-export function userSave(user) {
-    console.log('~~action user save~~~',user);
+export function userUpdate(user) {
     return async(dispatch, getState)=>{
-        const actionResponse = await dispatch(apiAction(USER_SAVE_API, user));
+        const actionResponse = await dispatch(apiAction(USER_UPDATE_API, [user]));
 
-        if (actionResponse.type === USER_SAVE_SUCCESS)
+        if (actionResponse.type === USER_UPDATE_SUCCESS)
+            return dispatch(batchActions([
+                    dispatch(apiAction(USER_LIST_API))
+                    ,configEntityModal({show:false})
+                ])
+            );
+        else  return actionResponse;
+    }
+}
+
+export const USER_CREATE_REQUEST ='USER_CREATE_REQUEST'
+export const USER_CREATE_FAILURE ='USER_CREATE_FAILURE'
+export const USER_CREATE_SUCCESS ='USER_CREATE_SUCCESS'
+export const USER_CREATE_API={
+    actions:[USER_CREATE_REQUEST, USER_CREATE_SUCCESS, USER_CREATE_FAILURE],
+    handler:'user',
+    func:'create'
+}
+
+export function userCreate(user) {
+    return async(dispatch, getState)=>{
+        const actionResponse = await dispatch(apiAction(USER_CREATE_API, [user]));
+
+        if (actionResponse.type === USER_CREATE_SUCCESS)
             return dispatch(batchActions([
                     dispatch(apiAction(USER_LIST_API))
                     ,configEntityModal({show:false})
@@ -59,6 +85,8 @@ export function userSave(user) {
 }
 
 
+
+/***************old code*************/
 
 
 export function userLogin(user) {

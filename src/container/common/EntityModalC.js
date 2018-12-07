@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch =>{
         cancelFunc:()=>{
             dispatch(configEntityModal({show:false}))
         }
-        // ,saveFunc:PropTypes.func.isRequired
+        // ,updateFunc:PropTypes.func.isRequired
     }
 }
 

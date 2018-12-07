@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch =>{
         noFunc:()=>{
             dispatch(configConfirmModal({show:false}))
         }
-        // ,saveFunc:PropTypes.func.isRequired
+        // ,updateFunc:PropTypes.func.isRequired
     }
 }
 

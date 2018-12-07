@@ -1,4 +1,4 @@
-import {USER_SAVE_SUCCESS, USER_SAVE_FAILURE, USER_SELECT} from '../action/Action'
+import {USER_SELECT} from '../action/Action'
 
 export default function wipItems(state=[], action){
     // console.log(state, '~~~wip user reducer~~', action);
@@ -12,10 +12,6 @@ export default function wipItems(state=[], action){
                 copy.splice(index,1);
             }
             return copy;
-        case USER_SAVE_SUCCESS:
-            return action.payload;
-        case USER_SAVE_FAILURE:
-            return [ ...state, {id:'m4', firstname:'mmmmm444', lastname:'mmmmm444'}];
         default:
             return state;
     }
