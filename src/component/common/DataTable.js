@@ -50,6 +50,7 @@ class DataTable extends Component{
     }
 
     render(){
+        console.log('~~debug~~',this.props.items);
         if(this.props.items.length==0)return(<div></div>)
 
         return (

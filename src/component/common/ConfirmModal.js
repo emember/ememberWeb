@@ -14,7 +14,6 @@ class ConfirmModal extends Component{
     }
 
     render(){
-        console.log();
         return(
             <Modal show={this.props.config.show}>
                 <Modal.Body>{ this.props.t(this.props.config.msg)}</Modal.Body>

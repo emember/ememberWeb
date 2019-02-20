@@ -12,7 +12,7 @@ const initState={
         ,{key:'cn',value:'中文'}
     ]
     ,menuItems:[
-         {name:'members',url:'/main', exact:true}
+         {name:'members',url:'/main/members', exact:true}
          ,{name:'marketing',url:'/main/marketing', exact:false}
          ,{name:'reports',url:'/main/reports', exact:false}
          ,{name:'company',url:'/main/company', exact:false}

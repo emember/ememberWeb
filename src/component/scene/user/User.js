@@ -8,7 +8,10 @@ import UserModal from './UserModal';
 import EntityButtonCreateC from '../../../container/common/EntityButtonCreateC'
 import EntityButtonEditC from '../../../container/common/EntityButtonEditC'
 import EntityButtonDeleteC from '../../../container/common/EntityButtonDeleteC'
+import EntityButtonFilterC from '../../../container/common/EntityButtonFilterC'
 import ConfirmModalC from "../../../container/common/ConfirmModalC";
+import Root from "../../../container/Root";
+import UserFilterForm from "./UserFilterForm";
 
 
 class User extends Component {
@@ -43,13 +46,18 @@ class User extends Component {
             return (
                 <div>
                     <Row>
-                        <EntityButtonCreateC para={this.state.columns}/>
+                        <EntityButtonCreateC />
                         <EntityButtonEditC para={{
                             entity: this.props.wipItems.length == 1 ? this.props.wipItems[0] : {}
                         }}/>
-                        <EntityButtonDeleteC para={this.props.wipItems.map(item => {
-                            return item['user_account_id']
-                        })}/>
+                        <EntityButtonDeleteC />
+                        <EntityButtonFilterC />
+                    </Row>
+                    <Row>
+                        <UserFilterForm
+                            initialValues={this.props.filter}
+                            onSubmit={this.props.fetchItems}
+                        />
                     </Row>
                     <Row>
                         <DataTable
@@ -71,7 +79,7 @@ class User extends Component {
                         updateFunc={this.props.updateItems}
                         createFunc={this.props.createItem}
                     />
-                    <ConfirmModalC yesFunc={this.props.deleteItems}/>
+                    <ConfirmModalC yesFunc={this.props.deleteItemsMerged}/>
                 </div>
             )
         }

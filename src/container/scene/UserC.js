@@ -12,22 +12,37 @@ import {
 
 const mapStateToProps = state=>{
     return{
-        items:state.users
+        items:state.entityItems
         ,wipItems:state.wipItems
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) =>{
     return {
-        fetchItems:()=>{dispatch(apiAction(USER_LIST_API));}
+        fetchItems:(para)=>{console.log('~~~~ggg~~');
+            dispatch(apiAction(USER_LIST_API,para));}
         ,updateItems:(entity)=>{dispatch(userUpdate(entity));}
         ,createItem:(entity)=>{dispatch(userCreate(entity));}
-        ,deleteItems:()=>{
-            dispatch(userDelete(ownProps.wipItems))
+        ,deleteItems:(items)=>{
+            dispatch(userDelete(items))
         }
-        ,toggleItem:(item, selected)=>{dispatch(userSelect(item, selected))}
+        ,toggleItem:(item, selected)=>{
+            dispatch(userSelect(item, selected))
+        }
     }
 }
-const UserC = connect(mapStateToProps, mapDispatchToProps)(User)
+
+const mergeProps =(stateProps, dispatchProps, ownProps)=>{
+    return{
+        ...stateProps,
+        ...dispatchProps,
+        ...ownProps,
+        deleteItemsMerged:()=>{
+            dispatchProps.deleteItems(stateProps.wipItems)
+        }
+    }
+}
+
+const UserC = connect(mapStateToProps, mapDispatchToProps, mergeProps)(User)
 
 export {UserC}

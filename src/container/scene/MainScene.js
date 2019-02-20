@@ -32,6 +32,7 @@ class MainScene extends Component{
                     </Col>
 
                     <Col lg={10}>
+                        <Route path="/main/members" component={scenes.MemberC}/>
                         <Route path="/main/marketing" component={scenes.MarketingScene}/>
                         <Route path="/main/reports" component={scenes.ReportScene}/>
                         <Route path="/main/company" component={scenes.CompanyScene}/>

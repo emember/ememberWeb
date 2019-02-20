@@ -1,7 +1,6 @@
 import {USER_SELECT} from '../action/Action'
 
 export default function wipItems(state=[], action){
-    // console.log(state, '~~~wip user reducer~~', action);
     switch (action.type){
         case USER_SELECT:
             let copy=[...state];

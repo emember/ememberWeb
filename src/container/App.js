@@ -16,7 +16,6 @@ const App =()=>(
         <div>
             <Route exact path="/" component={scenes.LoginC}/>
             <Route path="/main" component={scenes.MainScene}/>
-            <Route path="/main/test" component={User}/>
         </div>
     </Router>
     )

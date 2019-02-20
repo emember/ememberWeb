@@ -21,7 +21,7 @@ class Login extends Component{
         return (
             <Grid>
                 <LoginForm onSubmit={this.props.btnLoginClick} initialValues={this.props.loginUser}/>
-                { this.props.loginUser.verified && (<Redirect to="/main" />)}
+                { this.props.loginUser.verified && (<Redirect to="/main/members" />)}
             </Grid>
         )
     }
