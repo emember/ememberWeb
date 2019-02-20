@@ -15,7 +15,7 @@ class Menu extends Component
         let items=this.props.menuItems.map((item,index,arr)=>{
             return(
                 <LinkContainer to={item.url} key={index} activeHref="active" exact={item.exact}>
-                    <NavItem >{this.props.t(item.name)}</NavItem>
+                    <NavItem eventKey={index}>{this.props.t(item.name)}</NavItem>
                 </LinkContainer>
             )
         })

@@ -1,6 +1,7 @@
 import {CONFIG_CONFIRM_MODAL} from '../action/Action'
 
 export default function confirmModalConfig(state={show:false, msg:'', alert:{style:'', msg:''}}, action){
+    // console.log('~~confirmModalConfig~~~',action);
     switch (action.type){
         case CONFIG_CONFIRM_MODAL:
             return Object.assign({}, state, action.config);

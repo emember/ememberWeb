@@ -8,7 +8,7 @@ import {localize} from 'redux-i18n';
 class ConfirmModal extends Component{
 
     static propTypes={
-        config:PropTypes.object
+        config:PropTypes.object.isRequired
         ,yesFunc:PropTypes.func.isRequired
         ,noFunc:PropTypes.func.isRequired
     }
@@ -18,8 +18,8 @@ class ConfirmModal extends Component{
             <Modal show={this.props.config.show}>
                 <Modal.Body>{ this.props.t(this.props.config.msg)}</Modal.Body>
                 <Modal.Footer>
-                    <Button type="button" onClick={this.props.yesFunc}>{this.props.t('yes')}</Button>
-                    <Button type="button" onClick={this.props.noFunc}>{this.props.t('no')}</Button>
+                    <Button key="btnYesConfirmModal" type="button" onClick={this.props.yesFunc}>{this.props.t('yes')}</Button>
+                    <Button key="btnNoConfirmModal" type="button" onClick={this.props.noFunc}>{this.props.t('no')}</Button>
                 </Modal.Footer>
                 <Alert bsStyle={this.props.config.alert.style}>{this.props.config.alert.msg}</Alert>
             </Modal>

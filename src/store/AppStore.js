@@ -20,8 +20,15 @@ const initState={
          // ,{name:'Logout',url:'/logout'}
      ]
     ,loginUser:{username:'111@222.com', password:'111', verified:false}
-    ,users:[]
-    ,members:[]
+    ,pageSizeOptions:[
+        {key:2,value:2}
+        ,{key:3,value:3}
+        ,{key:5,value:5}
+        // {key:'10',value:'10'}
+        // ,{key:'25',value:'25'}
+        // ,{key:'50',value:'50'}
+        // ,{key:'100',value:'100'}
+    ]
     // ,wipItems:[]
     // ,memberWip:{}
 }

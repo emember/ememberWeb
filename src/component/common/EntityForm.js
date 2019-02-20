@@ -31,8 +31,8 @@ class EntityForm extends Component{
             <Form onSubmit={handleSubmit} >
                 {formFields}
                 <FormGroup>
-                    <Button type="button" onClick={this.props.btnCancelClick}>{this.props.t('cancel')}</Button>
-                    <Button type="submit">{this.props.t('save')}</Button>
+                    <Button key="btnCancelEntityForm" type="button" onClick={this.props.btnCancelClick}>{this.props.t('cancel')}</Button>
+                    <Button key="btnSaveEntityForm" type="submit">{this.props.t('save')}</Button>
                 </FormGroup>
             </Form>
         )

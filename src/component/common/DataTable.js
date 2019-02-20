@@ -6,7 +6,6 @@ import {Table, Row, Button} from 'react-bootstrap';
 class DataTable extends Component{
     static propTypes={
         items:PropTypes.array.isRequired
-        ,fetchItems:PropTypes.func.isRequired
         ,columns:PropTypes.array.isRequired
         ,toggleSelection:PropTypes.func
     }
@@ -43,10 +42,6 @@ class DataTable extends Component{
         return (
             <tr key={index}>{tds}</tr>
         );
-    }
-
-    componentWillMount(){
-        this.props.fetchItems();
     }
 
     render(){

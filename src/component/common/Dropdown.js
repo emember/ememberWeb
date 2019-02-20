@@ -6,10 +6,11 @@ class Dropdown extends FormControl {
 
     static propTypes={
         items:PropTypes.array.isRequired
-        ,dpdOnChange:PropTypes.func.isRequired
+        ,dpdOnChange:PropTypes.func
     }
 
     render(){
+        console.log('~~~',this.props.items)
         let options = this.props.items.map((item, index, arr)=>{
             return(
                 <option value={item.key} key={item.key}>{item.value}</option>
